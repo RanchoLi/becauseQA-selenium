@@ -1,6 +1,6 @@
 # because-selenium -Selenium Downloader
 
-A windows batch script to download the latest [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/),latest [Firefox Dirver](https://github.com/mozilla/geckodriver) and selenium standalone server file[Selenium-standalone-version.jar](https://selenium-release.storage.googleapis.com/index.html), also it will started the selenium standalone server after all downloaded finished.
+A windows batch script to download the latest [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/),latest [Firefox Dirver](https://github.com/mozilla/geckodriver) and selenium standalone server file [Selenium-standalone-version.jar](https://selenium-release.storage.googleapis.com/index.html), also it will start the selenium standalone server after all download finished.
 
 ## Project Links:
 * Get Latest Release: [V 1.0.0](https://github.com/becausetesting/becausetesting-selenium/releases/latest)
