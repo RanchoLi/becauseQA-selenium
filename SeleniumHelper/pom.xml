@@ -1,0 +1,507 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.becauseQA</groupId>
+	<artifactId>SeleniumHelper</artifactId>
+	<version>0.0.1</version>
+	<name>Selenium Helper</name>
+	<description>Selenium Utilities tool.</description>
+	<url>https://github.com/becauseQA/becauseQA-SeleniumHelper</url>
+	<inceptionYear>2016</inceptionYear>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<java.version>1.8</java.version>
+
+		<application.directory>${project.build.directory}/dist</application.directory>
+		<application.state>Release</application.state>
+		<application.size>23873</application.size> <!-- kb size -->
+		<application.installername>${project.artifactId}-${project.version}-${timestamp}-setup.exe</application.installername>
+
+		<application.libs.directoryname>lib</application.libs.directoryname>
+		<application.mainclass>com.github.becauseQA.window.selenium.ui.SeleniumHelper</application.mainclass>
+		<application.excludeGroupIds>junit</application.excludeGroupIds>
+
+		<!-- common plugins dependencies -->
+		<becauseQA.version>1.0.3</becauseQA.version>
+		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
+		<maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
+		<!--plugin it profile -->
+		<maven-ant-plugin.version>1.8</maven-ant-plugin.version>
+		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+		<maven-jar-plugin.version>2.6</maven-jar-plugin.version>
+		<launch4j-maven-plugin.version>1.7.10</launch4j-maven-plugin.version>
+		<license-maven-plugin.version>1.9</license-maven-plugin.version>
+		<!-- plugin release profile ,upload to maven central plugins -->
+		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+		<maven-source-plugin.version>3.0.0</maven-source-plugin.version>
+		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+		<nexus-staging-maven-plugin.version>1.6.7</nexus-staging-maven-plugin.version>
+
+		<jgoodies-common.version>1.8.1</jgoodies-common.version>
+		<jgoodies-looks.version>2.7.0</jgoodies-looks.version>
+		<jgoodies-forms.version>1.9.0</jgoodies-forms.version>
+		<miglayout.version>5.0</miglayout.version>
+		<lgooddatepicker.version>7.3.3</lgooddatepicker.version>
+
+
+	</properties>
+
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Alter Hu</name>
+		<url>https://github.com/becauseQA/becauseQA-utils-window</url>
+	</organization>
+	<scm>
+		<connection>scm:git:git@github.com:becauseQA/becauseQA-utils-window.git</connection>
+		<developerConnection>scm:git:git@github.com:becauseQA/becauseQA-utils-window.git</developerConnection>
+		<url>https://github.com/becauseQA/becauseQA-utils-window</url>
+		<tag>becauseQA-utils-window</tag>
+	</scm>
+	<issueManagement>
+		<url>https://github.com/becauseQA/becauseQA-utils-window</url>
+		<system>GitHub</system>
+	</issueManagement>
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/becauseQA/commons-window</url>
+	</ciManagement>
+
+	<mailingLists>
+		<mailingList>
+			<name>becaseQA Commons libraries developer Users List</name>
+			<post>becauseQA-commons-users@googlegroups.com</post>
+			<archive>https://groups.google.com/forum/#!forum/becauseQA-commons-users</archive>
+		</mailingList>
+	</mailingLists>
+
+	<developers>
+		<developer>
+			<id>alter</id>
+			<name>Alter Hu</name>
+			<timezone>GMT</timezone>
+			<roles>
+				<role>Comitter</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<contributors>
+		<contributor>
+			<name>Tom Steven</name>
+		</contributor>
+	</contributors>
+	<dependencies>
+
+		<!-- http://mvnrepository.com/artifact/com.jgoodies/jgoodies-common -->
+		<dependency>
+			<groupId>com.jgoodies</groupId>
+			<artifactId>jgoodies-common</artifactId>
+			<version>${jgoodies-common.version}</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/com.jgoodies/jgoodies-looks -->
+		<dependency>
+			<groupId>com.jgoodies</groupId>
+			<artifactId>jgoodies-looks</artifactId>
+			<version>${jgoodies-looks.version}</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/com.jgoodies/jgoodies-looks -->
+		<dependency>
+			<groupId>com.jgoodies</groupId>
+			<artifactId>jgoodies-forms</artifactId>
+			<version>${jgoodies-forms.version}</version>
+		</dependency>
+
+		<!-- http://mvnrepository.com/artifact/com.miglayout/miglayout-core -->
+		<dependency>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout-core</artifactId>
+			<version>${miglayout.version}</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/com.miglayout/miglayout-swing -->
+		<dependency>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout-swing</artifactId>
+			<version>${miglayout.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.lgooddatepicker</groupId>
+			<artifactId>LGoodDatePicker</artifactId>
+			<version>${lgooddatepicker.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.becauseQA</groupId>
+			<artifactId>becauseQA-utils</artifactId>
+			<version>${becauseQA.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.becauseQA</groupId>
+			<artifactId>becauseQA-utils-windows</artifactId>
+			<version>${becauseQA.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${maven-ant-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>Copy all launch4j icon into build directory,will used
+									for
+									build NSIS installer</echo>
+								<copy todir="${application.directory}">
+									<fileset dir="${project.basedir}/src/main/resources/images">
+										<include name="*.ico" />
+									</fileset>
+								</copy>
+								<echo>Copy all NSIS script and version xml file into build
+									directory</echo>
+								<copy todir="${application.directory}">
+									<fileset dir="${project.build.directory}/classes">
+										<include name="*.nsh" />
+										<include name="*.xml" />
+									</fileset>
+								</copy>
+								<echo>Copy the readme.md file into build directory</echo>
+								<copy todir="${application.directory}">
+									<fileset dir="${project.basedir}">
+										<include name="*.md" />
+									</fileset>
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skipTests>true</skipTests>
+					<useSystemClassLoader>false</useSystemClassLoader>
+					<testFailureIgnore>false</testFailureIgnore>
+					<failIfNoTests>false</failIfNoTests>
+					<reuseForks>false</reuseForks>
+					<forkCount>0</forkCount>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+				<configuration>
+					<outputDirectory>${application.directory}/doc</outputDirectory>
+					<reportOutputDirectory>${application.directory}/doc</reportOutputDirectory>
+					<excludePackageNames>*.becauseQA.window.selenium.*</excludePackageNames>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
+	<profiles>
+		<profile>
+			<id>it</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<version>${license-maven-plugin.version}</version>
+						<configuration>
+							<verbose>true</verbose>
+							<addSvnKeyWords>false</addSvnKeyWords>
+							<emptyLineAfterHeader>true</emptyLineAfterHeader>
+							<licenseFile>${application.directory}/LICENSE.txt</licenseFile>
+							<ignoreTag>true</ignoreTag>
+							<licenseName>apache_v2</licenseName>
+							<processStartTag>false</processStartTag>
+							<sectionDelimiter>sectionDelimiter</sectionDelimiter>
+							<!--generate license file even if it exists -->
+							<force>true</force>
+							<roots>
+								<root>src/main/java</root>
+							</roots>
+							<licensesOutputDirectory>${application.directory}/licenses</licensesOutputDirectory>
+							<useMissingFile>true</useMissingFile>
+							<licenseMerges>
+								<licenseMerge>Apache License, Version 2.0|The Apache Software
+									License, Version 2.0|Apache 2|Apache License 2.0|AL 2.0</licenseMerge>
+								<licenseMerge>CDDLv1|Common Development and Distribution License
+									(CDDL) v1.0|COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL)
+									Version 1.0</licenseMerge>
+							</licenseMerges>
+							<!--exclude test-scoped dependencies from the 3rd party license-list -->
+							<excludedScopes>test</excludedScopes>
+						</configuration>
+						<executions>
+							<execution>
+								<id>first</id>
+								<phase>process-sources</phase>
+								<goals>
+									<goal>update-file-header</goal>
+									<!--Adds the full-blown license file to the final product -->
+									<goal>update-project-license</goal>
+									<goal>download-licenses</goal>
+								</goals>
+
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>${maven-dependency-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>copy-dependencies</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy-dependencies</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${application.directory}/${application.libs.directoryname}</outputDirectory>
+									<overWriteReleases>true</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+									<overWriteIfNewer>true</overWriteIfNewer>
+									<excludeGroupIds>${application.excludeGroupIds}</excludeGroupIds>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-jar-plugin</artifactId>
+						<version>${maven-jar-plugin.version}</version>
+						<configuration>
+							<outputDirectory>${application.directory}</outputDirectory>
+							<finalName>${project.artifactId}-${project.version}</finalName>
+							<archive>
+								<manifest>
+									<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+									<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+									<!-- Add the main class for the jar file -->
+									<addClasspath>true</addClasspath>
+									<mainClass>${application.mainclass}</mainClass>
+									<classpathPrefix>${application.libs.directoryname}/</classpathPrefix>
+								</manifest>
+								<manifestEntries>
+									<url>${project.url}</url>
+									<Specification-Title>${project.name}</Specification-Title>
+									<Specification-Version>${project.version}</Specification-Version>
+									<SplashScreen-Image>${application.splashscreen}</SplashScreen-Image>
+									<Implementation-Version>1.0</Implementation-Version>
+									<Svn-Revision>1.0.0</Svn-Revision>
+									<Build-Tag>1.0</Build-Tag>
+									<Build-Number>1.0</Build-Number>
+								</manifestEntries>
+							</archive>
+						</configuration>
+						<executions>
+							<execution>
+								<id>default-jar</id>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- launch4j plugin to exe file in windows platform -->
+					<!-- https://mvnrepository.com/artifact/com.akathist.maven.plugins.launch4j/launch4j-maven-plugin -->
+					<plugin>
+						<groupId>com.akathist.maven.plugins.launch4j</groupId>
+						<artifactId>launch4j-maven-plugin</artifactId>
+						<version>${launch4j-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>launch4j</id>
+								<phase>package</phase>
+								<goals>
+									<goal>launch4j</goal>
+								</goals>
+								<configuration>
+									<!-- Basic -->
+									<outfile>${application.directory}/${project.artifactId}.exe</outfile>
+									<jar>${application.directory}/${project.artifactId}-${project.version}.jar</jar>
+									<icon>${project.basedir}/src/main/resources/images/logo.ico</icon>
+									<chdir>.</chdir>
+									<priority>high</priority>
+									<restartOnCrash>true</restartOnCrash>
+									<stayAlive>false</stayAlive><!-- prevent the memory to increase -->
+									<errTitle>Java VirtualMachine Download Error</errTitle>
+									<downloadUrl>http://java.com/download</downloadUrl>
+									<supportUrl>https://github.com/becauseQA/becauseQA-utils-window/issues</supportUrl>
+									<!-- classpath -->
+									<classPath>
+										<mainClass>${application.mainclass}</mainClass>
+										<jarLocation>${application.libs.directoryname}/</jarLocation>
+										<addDependencies>false</addDependencies>
+									</classPath>
+									<!-- headers tab -->
+									<headerType>gui</headerType>
+									<!-- Single instance -->
+									<singleInstance>
+										<mutexName>{project.artifactId}-${project.version}</mutexName>
+										<windowTitle>{project.artifactId}-${project.version}</windowTitle>
+									</singleInstance>
+									<!-- JRE -->
+									<jre>
+
+										<minVersion>1.6.0</minVersion>
+										<opts>
+											<opt>-splash:${project.basedir}\src\main\resources\images\splashscreen.png</opt>
+										</opts>
+									</jre>
+									<!-- splash,I was on the right track by converting my jpg file into 
+										a bmp file. The Launch4j GUI allows you to choose any file for the Splash 
+										file, but it requires a 24-bit bmp file. -->
+									<!-- <splash> <file>${project.basedir}/src/main/resources/images/splashscreen.bmp</file> 
+										<waitForWindow>true</waitForWindow> <timeout>60</timeout> <timeoutErr>true</timeoutErr> 
+										</splash> -->
+									<!-- version info -->
+									<versionInfo>
+										<fileVersion>${project.version}.0</fileVersion>
+										<txtFileVersion>${project.version}.0</txtFileVersion>
+										<fileDescription>${project.artifactId}</fileDescription>
+										<copyright>Copyright(C)2013-2016 becauseQA.github.com</copyright>
+										<productVersion>${project.version}.0</productVersion>
+										<txtProductVersion>${project.version}.0</txtProductVersion>
+										<productName>${project.artifactId}</productName>
+										<companyName>becauseQA.github.com</companyName>
+										<internalName>${project.artifactId}</internalName>
+										<originalFilename>${project.artifactId}-win32-${project.version}.exe</originalFilename>
+									</versionInfo>
+									<messages>
+										<startupErr>An error occurred while starting the application.</startupErr>
+										<bundledJreErr>An error occurred while starting the
+											application.</bundledJreErr>
+										<jreVersionErr>This application requires a Java Runtime
+											Environment</jreVersionErr>
+										<launcherErr>The registry refers to a nonexistent Java Runtime
+											Environment installation or the runtime is corrupted.</launcherErr>
+										<instanceAlreadyExistsMsg>An application instance is already
+											running.</instanceAlreadyExistsMsg>
+									</messages>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+
+		</profile>
+		<profile>
+			<id>release</id>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>ossrh</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+				</snapshotRepository>
+				<repository>
+					<id>ossrh</id>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>${maven-source-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${maven-gpg-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+								<!-- <configuration> <executable>gpg</executable> <homedir>${gpg.homedir}</homedir> 
+									<keyname>${gpg.keyname}</keyname> <passphrase>${gpg.passphrase}</passphrase> 
+									</configuration> -->
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>${nexus-staging-maven-plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<serverId>nexus</serverId>
+							<nexusUrl>http://oss.sonatype.org/</nexusUrl>
+							<autoReleaseAfterClose>false</autoReleaseAfterClose>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

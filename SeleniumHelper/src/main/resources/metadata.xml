@@ -1,0 +1,17 @@
+<metadata>
+	<groupId>${project.groupId}</groupId>
+	<artifactId>${project.artifactId}</artifactId>
+	<name>${project.name}</name>
+	<versioning>
+		<latest>${project.version}.${timestamp}</latest>
+		<latestBuild>${application.installername}</latestBuild>
+		<release>${project.version}.${timestamp}</release>
+		<versions>
+			<version>1.0.0</version>
+			<version>1.0.1</version>
+			<version>1.0.2</version>
+			<version>${project.version}</version>
+		</versions>
+		<lastUpdated>${timestamp}</lastUpdated>
+	</versioning>
+</metadata>
